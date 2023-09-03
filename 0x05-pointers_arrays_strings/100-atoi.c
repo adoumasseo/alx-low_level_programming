@@ -10,14 +10,14 @@
 int _atoi(char *s)
 {
 	int len, i, n, sign, digit, ne;
-	
+
 	ne = sign = digit = n = 0;
 	for (len = 0; s[len] != 0; len++)
 	{
 		if (s[len] == 45)
 			sign++;
 		if (s[len] >= 48 && s[len] <= 57)
-		{	
+		{
 			ne++;
 			if (s[len + 1] < 48 || s[len + 1] > 57)
 				break;
