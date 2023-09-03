@@ -9,7 +9,8 @@
 
 int _atoi(char *s)
 {
-	int len, i, n, sign, digit, ne;
+	int len, i, n, sign, digit;
+	unsigned int ne;
 
 	ne = sign = digit = n = 0;
 	for (len = 0; s[len] != 0; len++)
@@ -23,9 +24,8 @@ int _atoi(char *s)
 				break;
 		}
 	}
-	if (ne == 0)
-		return (0);
-	else
+
+	if (ne > 0)
 	{
 		for (i = 0; i <= len; i++)
 		{
@@ -41,5 +41,6 @@ int _atoi(char *s)
 		}
 		return (n);
 	}
-
+	else
+		return (0);
 }
