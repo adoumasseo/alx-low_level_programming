@@ -1,25 +1,48 @@
 #include "main.h"
 
 /**
- * rev_string - Function that Reverses a string
- * @s: Input string
+ * _atoi - converts a string to an integer
+ * @s: string to be converted
  *
- * Return: String in reverse
+ * Return: the int converted from the string
  */
 
-void rev_string(char *s)
+int _atoi(char *s)
 {
-	char rev = s[0];
-	int counter = 0;
-	int i;
+	int i, d, n, len, f, digit;
 
-	while (s[counter] != '\0')
-	counter++;
-	for (i = 0; i < counter; i++)
+	i = 0;
+	d = 0;
+	n = 0;
+	len = 0;
+	f = 0;
+	digit = 0;
+
+	while (s[len] != '\0')
+		len++;
+
+	while (i < len && f == 0)
 	{
-		counter--;
-		rev = s[i];
-		s[i] = s[counter];
-		s[counter] = rev;
+		if (s[i] == '-')
+			++d;
+
+		if (s[i] >= '0' && s[i] <= '9')
+		{
+			digit = s[i] - '0';
+			if (d % 2)
+				digit = -digit;
+			n = n * 10 + digit;
+			f = 1;
+			if (s[i + 1] < '0' || s[i + 1] > '9')
+				break;
+			f = 0;
+		}
+		i++;
 	}
+
+	printf("%d\n", f);
+	if (f == 0)
+		return (0);
+
+	return (n);
 }
