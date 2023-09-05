@@ -8,10 +8,10 @@
  */
 int main(void)
 {
-    char *s = "hello";
+    char *s = "llll ddsc hello";
     char *f;
 
-    f = _strchr(s, 'z');
+    f = _strchr(s, 'l');
 
     if (f != NULL)
     {
