@@ -1,7 +1,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-#include <math.h>
+#include <stdio.h>
 int _putchar(char c);
 void printalphabet(char a);
 void _puts_recursion(char *s);
@@ -12,5 +12,6 @@ int _pow_recursion(int x, int y);
 int _sqrt_recursion(int n);
 int _sqrt_help(int n, int i);
 int is_prime_number(int n);
+int prime_help(int n, int i);
 
 #endif
