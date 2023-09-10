@@ -11,6 +11,9 @@
  */
 int main(int argc, char *argv[])
 {
+	char c = 'a';
+
+	argv[0] = &c;
 	printf("%d\n", argc - 1);
 	return (0);
 }
