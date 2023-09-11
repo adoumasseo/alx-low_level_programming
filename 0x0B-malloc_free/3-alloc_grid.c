@@ -20,6 +20,7 @@ int **alloc_grid(int width, int height)
 	p2a = malloc(sizeof(int *) * height);
 	if (p2a == NULL)
 	{
+		free(p2a);
 		return (NULL);
 	}
 	for (i = 0; i < height; i++)
@@ -27,6 +28,7 @@ int **alloc_grid(int width, int height)
 		*(p2a + i) = malloc(sizeof(int) * width);
 		if (*(p2a + i) == NULL)
 		{
+			free(*(p2a + i));
 			return (NULL);
 		}
 		pa = *(p2a + i);
