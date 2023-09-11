@@ -1,44 +1,38 @@
 #include "main.h"
-
 #include <stdlib.h>
 
 /**
- * str_concat - concatenate two strings
- * Description: allocate space in memory which contains the contents of s1.
- * @s1: The first string
- * @s2: the second string
- * Return: a pointer to a newly allocated space in memory containing s1
+ * alloc_grid - 2 dimensional array
+ * Description: a pointer to a 2 dimensional array of integers.
+ * @width: The number of column
+ * @height: the number of row
+ * Return: a pointer to the 2 dimentional array
  */
-char *str_concat(char *s1, char *s2)
+int **alloc_grid(int width, int height)
 {
-	char *concat;
-	int i, j, k, l;
+	int **p2a;
+	int *pl;
+	int i, j;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	for (i = 0; *(s1 + i) != '\0'; i++)
-		;
-	for (j = 0; *(s2 + j) != '\0'; j++)
-		;
-	j++;
-	concat = malloc(i + j);
-	if (concat == NULL)
+	if (width <= 0 || height <= 0)
 		return (NULL);
-	k = 0;
-	l = 0;
-	while (k < i + j)
+	p2a = malloc(height);
+	if (p2a == NULL)
 	{
-		if (k < i)
-			*(concat + k) = *(s1 + k);
-		if (k >= i)
-		{
-			*(concat + k) = *(s2 + l);
-			l++;
-		}
-		k++;
+		free(p2a);
+		return (NULL);
 	}
-	return (concat);
-
+	for (i = 0; i < height; i++)
+	{
+		*(p2a + i) = malloc(width);
+		if (*(p2a + i) == NULL)
+		{
+			free(*(p2a + i));
+			return (NULL);
+		}
+		pl = *(p2a + i);
+		for (j = 0; j < width; j++)
+			*(pl + j) = 0;
+	}
+	return (p2a);
 }
