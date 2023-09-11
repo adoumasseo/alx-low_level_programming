@@ -9,13 +9,12 @@
  */
 int main(void)
 {
-	char *t = "ortniel";
     char *s;
 
-    s = _strdup(t);
+    s = str_concat("", "");
     if (s == NULL)
     {
-        printf("failed to allocate memory\n");
+        printf("failed\n");
         return (1);
     }
     printf("%s\n", s);
