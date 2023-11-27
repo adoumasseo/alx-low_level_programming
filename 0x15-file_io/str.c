@@ -3,8 +3,8 @@
 
 void main(void)
 {
-	char str[] = "";
+	char str[4] = "cc";
 
-	printf("la taille strlen est : %ld\n", strlen(str));
-	printf("la taille sizeof est : %ld\n", sizeof(str));
+	printf("la valeru est : %d\n", str[2]);
+	printf("la  valeur est : %d\n", str[3]);
 }
