@@ -1,50 +1,32 @@
 #include "main.h"
 
 /**
- * read_file - Read a text file and print to standard output
- * @filename: A string of the file path
- * @letters: The number of characters to read
+ * append_text_to_file - function that appends text at the end of a file
  *
- * Return: The number of letters read and written
+ * @filename: name of the file
+ * @text_content: string to add at the end of the
+ * Return: 1 on success
  */
-ssize_t read_file(const char *filename, size_t letters)
+int append_text_to_file(const char *filename, char *text_content)
 {
-    int fd;
-    ssize_t count;
-    void *buff;
+	int fd, fd2;
 
-    if (filename == NULL)
-        return (0);
-
-    fd = open(filename, O_RDONLY);
-    if (fd == -1)
-        return (0);
-
-    buff = malloc(letters);
-    if (buff == NULL)
-    {
-        close(fd);
-        return (0);
-    }
-
-    count = read(fd, buff, letters);
-    if (count == -1)
-    {
-        free(buff);
-        close(fd);
-        return (0);
-    }
-
-    count = write(STDOUT_FILENO, buff, count);
-    if (count == -1)
-    {
-        free(buff);
-        close(fd);
-        return (0);
-    }
-
-    free(buff);
-    close(fd);
-
-    return (count);
+	if (filename == NULL)
+		return (-1);
+	fd = open(filename, O_WRONLY | O_APPEND);
+	if (fd == -1)
+		return (-1);
+	if (text_content == NULL)
+		return (1);
+	for (; *text_content != '\0'; text_content++)
+	{
+		fd2 = write(fd, text_content, 1);
+		if (fd2 == -1)
+		{
+			close(fd);
+			return (-1);
+		}
+	}
+	close(fd);
+	return (1);
 }
