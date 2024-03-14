@@ -9,20 +9,20 @@
 int main(void)
 {
 	unsigned long int f1, f2, nf;
-	
+	int sum = 0;
+
 	f1 = f2 = nf = 1;
 	while (nf < 4000000)
 	{
 		if (nf % 2 == 0)
 		{
-			printf("%lu", nf);
-			if (nf < 3524578)
-				printf(", ");
+			sum = sum + nf;
 		}
 		f1 = f2;
 		f2 = nf;
 		nf = f1 + f2;
 	}
+	printf("%d", sum);
 	printf("\n");
 	return (0);
 }
